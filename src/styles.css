@@ -15,6 +15,10 @@ body {
   justify-content: space-evenly;
 }
 
+.past {
+  justify-content: space-between;
+}
+
 .instructions {
   display: flex;
   justify-content: center;

@@ -1,37 +1,43 @@
 import "./styles.css";
 
-let results = [];
+let results = { pastUserChoice: "", pastComputerChoice: "", pastResult: "" };
 let random;
-let result;
 let userChoice;
+let computerChoice;
+let result;
 
-$("#heads").hover(function () {
-  $("#p").html("Click to choose Heads.");
-});
+// $("#heads").hover(function () {
+//   $("#p").html("Click to choose Heads.");
+// });
 
-$("#tails").hover(function () {
-  $("#p").html("Click to choose Tails.");
-});
+// $("#tails").hover(function () {
+//   $("#p").html("Click to choose Tails.");
+// });
 
 function randomFunc() {
   random = Math.floor(Math.random() * 10);
   if (random <= 4) {
-    result = "heads";
+    computerChoice = "heads";
+  } else if (random > 4) {
+    computerChoice = "tails";
   }
-  else if (random >= 5){
-    result = "tails"
+  console.log(random);
+  console.log(computerChoice);
+}
+function evaluate(choice) {
+  if (choice === computerChoice) {
+    $("#p").html("You win!");
+    result = "win";
+  } else {
+    $("#p").html("You lose!");
+    result = "lose";
   }
 }
-function evaluate (choice){
-  if (choice = result){
-    $("#result").html('You win!');
-  }
-  else{
-    $("#result").html('You lose!');
-  }
+function list() {
+  results.pastUserChoice = userChoice;
+  results.pastComputerChoice = computerChoice;
+  results.pastResult = result;
 }
-
-
 $("#heads").click(function () {
   userChoice = "heads";
   randomFunc();

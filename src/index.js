@@ -1,6 +1,6 @@
 import "./styles.css";
 
-let results = { pastUserChoice: "", pastComputerChoice: "", pastResult: "" };
+let results = [];
 let random;
 let userChoice;
 let computerChoice;
@@ -34,18 +34,20 @@ function evaluate(choice) {
   }
 }
 function list() {
-  results.pastUserChoice = userChoice;
-  results.pastComputerChoice = computerChoice;
-  results.pastResult = result;
+  results = result;
+  $("#pastResults").append(`<li> ${results}</li>`);
+  console.log(results);
 }
 $("#heads").click(function () {
   userChoice = "heads";
   randomFunc();
   evaluate(userChoice);
+  list();
 });
 
 $("#tails").click(function () {
   userChoice = "tails";
   randomFunc();
   evaluate(userChoice);
+  list();
 });

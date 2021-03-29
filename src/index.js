@@ -5,6 +5,7 @@ let random;
 let userChoice;
 let computerChoice;
 let result;
+let i = 0;
 
 // $("#heads").hover(function () {
 //   $("#p").html("Click to choose Heads.");
@@ -34,9 +35,11 @@ function evaluate(choice) {
   }
 }
 function list() {
-  results = result;
-  $("#pastResults").append(`<li> ${results}</li>`);
-  console.log(results);
+  results.push(result);
+  $("#pastResults").html("");
+  for (let Result of results) {
+    $("#pastResults").append(`<li> ${Result}</li>`);
+  }
 }
 $("#heads").click(function () {
   userChoice = "heads";
